@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ControlEscolar" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/ColorFIC</item>
+    </style>
+
+    <style name="Theme.ControlEscolar" parent="Base.Theme.ControlEscolar" />
+
+    <style name="Theme.ControlEscolar.Fullscreen" parent="Theme.ControlEscolar">
+        <item name="android:actionBarStyle">
+            @style/Widget.Theme.ControlEscolar.ActionBar.Fullscreen
+        </item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+
+    </style>
+</resources>

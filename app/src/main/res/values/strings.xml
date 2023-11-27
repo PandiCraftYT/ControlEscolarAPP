@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Control Escolar</string>
+    <string name="btn_iniciar">Iniciar Sesión</string>
+    <string name="txt_Bienvendio">Bienvenido</string>
+    <string name="cerrar">Cerrar Sesión</string>
+    <string name="txt_ncuenta">Nº Cuenta</string>
+    <string name="txt_Alumno">Alumno: Carlos Nevarez</string>
+    <string name="txt_ncuentaMenu">Nº Cuenta: 17507995</string>
+    <string name="txt_pass">NIP</string>
+    <string name="txt_Kardex">Kardex</string>
+    <string name="txt_Justificante">Solicitar Justificante</string>
+    <string name="txt_Estudio">Constancia de Estudio</string>
+    <string name="txt_Credencil">Credencial</string>
+    <string name="txt_Calendario">Calendario</string>
+    <string name="img_fic">FIC</string>
+    <string name="txt_olvidasteNIP">¿Olvidaste tu NIP?</string>
+    <string name="img_fondo">FondoLogin</string>
+    <string name="title_activity_splashcreen">SplashcreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="PROXIMAMENTE">PROXIMAMENTE</string>
+    <string name="DERECHOS">Desarrollado por ALUMNOS :: Informática \n® 2023 todos los derechos reservados</string>
+</resources>

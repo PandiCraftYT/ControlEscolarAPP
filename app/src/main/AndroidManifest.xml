@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/iconfic"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/iconfic"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ControlEscolar"
+        tools:targetApi="34">
+        <activity
+            android:name=".Justificante"
+            android:exported="false" />
+        <activity
+            android:name=".SplashEscolar"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Credencial"
+            android:exported="false" />
+        <activity
+            android:name=".Estudio"
+            android:exported="false" />
+        <activity
+            android:name=".Kardex"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>
