@@ -17,6 +17,8 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 public class Justificante extends AppCompatActivity {
+    // Declaración de variables y constantes
+
     private static final int PICK_FILE_REQUEST_CODE = 1001;
     private Button btnAdjuntarArchivo;
     private TextView txtNombreArchivo;
@@ -32,13 +34,14 @@ public class Justificante extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_justificante);
-
+        // Inicialización de vistas y asignación de listeners
         btnAdjuntarArchivo = findViewById(R.id.btnAdjuntarArchivo);
         btnEnviarSolicitud = findViewById(R.id.btnEnviarSolicitud);
         txtNombreArchivo = findViewById(R.id.txtNombreArchivo);
-
         btnSelectDates = findViewById(R.id.btnSelectDates);
         txtFechasSeleccionadas = findViewById(R.id.FechaSeleccionada);
+
+        // Listener para el botón de selección de fechas
 
         btnSelectDates.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,7 @@ public class Justificante extends AppCompatActivity {
             }
         });
 
+        // Listener para el botón de adjuntar archivo
 
         btnAdjuntarArchivo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +58,7 @@ public class Justificante extends AppCompatActivity {
                 adjuntarArchivo();
             }
         });
+        // Listener para el botón de enviar solicitud
 
         btnEnviarSolicitud.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,20 +67,25 @@ public class Justificante extends AppCompatActivity {
             }
         });
     }
+    // Método para manejar la acción de retroceder
 
     public void Atras(View view){
         startActivity(new Intent(Justificante.this, MenuActivity.class));
     }
+    // Método para adjuntar un archivo
+
     private void adjuntarArchivo() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
         startActivityForResult(intent, PICK_FILE_REQUEST_CODE);
     }
+    // Método para enviar la solicitud (requiere implementación de la lógica de envío)
 
     private void enviarSolicitud() {
         // Lógica para enviar la solicitud
     }
 
+    // Método invocado cuando se recibe el resultado de una actividad iniciada con startActivityForResult
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -90,6 +100,7 @@ public class Justificante extends AppCompatActivity {
             }
         }
     }
+    // Método para obtener el nombre del archivo seleccionado
 
     private String obtenerNombreArchivo(Uri uri) {
         String nombreArchivo = null;
@@ -103,11 +114,14 @@ public class Justificante extends AppCompatActivity {
         }
         return nombreArchivo;
     }
+    // Método para mostrar el nombre del archivo seleccionado
 
     private void mostrarNombreArchivo(String nombreArchivo) {
         txtNombreArchivo.setText(nombreArchivo);
         txtNombreArchivo.setVisibility(View.VISIBLE);
     }
+    // Método para mostrar el selector de fechas
+
     private void mostrarSelectorFecha() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -133,6 +147,7 @@ public class Justificante extends AppCompatActivity {
 
         datePickerDialog.show();
     }
+    // Método para mostrar las fechas seleccionadas
 
     private void mostrarFechasSeleccionadas() {
         if (!fechaDesde.isEmpty() && !fechaHasta.isEmpty()) {
@@ -142,6 +157,7 @@ public class Justificante extends AppCompatActivity {
             reiniciarFechas();
         }
     }
+    // Método para reiniciar las fechas seleccionadas
 
     private void reiniciarFechas() {
         fechaDesde = "";

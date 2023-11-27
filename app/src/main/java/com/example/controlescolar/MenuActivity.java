@@ -17,42 +17,69 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        // Referencia al GridLayout desde el archivo de diseño
+
         maingrind = (GridLayout) findViewById(R.id.maingrid);
+        // Configuración de eventos para cada elemento en el GridLayout
 
         setSingleEvent(maingrind);
     }
+    // Método para manejar el botón de cerrar sesión
 
     public void cerrarSesionBtn(View view){
+        // Mostrar un mensaje al cerrar sesión y redirigir a la pantalla de inicio de sesión
+
         Toast.makeText(this, "Has Cerrado Sesión con EXITÓ", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(MenuActivity.this, LoginActivity.class));
     }
+    // Método para asignar eventos a los elementos del GridLayout
+
     private void setSingleEvent(GridLayout maingrind) {
+        // Recorre todos los elementos del GridLayout
+
         for (int i=0; i < maingrind.getChildCount(); i++){
+            // Obtiene cada elemento como una CardView
+
             CardView cardView = (CardView) maingrind.getChildAt(i);
             final int finalI = i;
+            // Asigna un OnClickListener a cada CardView
+
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // Realiza acciones según la posición de la CardView en el GridLayout
+
                     if(finalI ==0){
+                        // Abre la actividad Kardex
+
                         Intent intent = new Intent(MenuActivity.this, Kardex.class);
                         startActivity(intent);
                     } else if (finalI == 1) {
+                        // Abre la actividad Estudio
+
                         Intent intent = new Intent(MenuActivity.this, Estudio.class);
                         startActivity(intent);
                     } else if (finalI == 2) {
+                        // Abre la actividad Credencial
+
                         Intent intent = new Intent(MenuActivity.this, Credencial.class);
                         startActivity(intent);
                     } else if (finalI == 3) {
-                        String url = "https://www.uas.edu.mx/servicios/calendario/";
+                        // Abre un navegador web con la URL proporcionada
 
+                        String url = "https://www.uas.edu.mx/servicios/calendario/";
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse(url));
                         startActivity(intent);
 
                     } else if (finalI == 4) {
+                        // Abre la actividad Justificante
+
                         Intent intent = new Intent(MenuActivity.this, Justificante.class);
                         startActivity(intent);
                     }else {
+                        // Muestra un mensaje si la opción no está disponible / en caso que tengamos otro cardview
+
                         Toast.makeText(MenuActivity.this, " NO DISPONIBLE", Toast.LENGTH_SHORT).show();
                     }
                     
