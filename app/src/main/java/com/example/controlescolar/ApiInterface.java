@@ -31,7 +31,26 @@ public interface ApiInterface {
         }
 
         public class Data {
-            // Puedes agregar más campos según lo que devuelva tu API
+            private User user;  // Agrega esta línea para definir la clase User
+
+            public User getUser() {
+                return user;
+            }
+        }
+
+        public class User {
+            private String no_cuenta;
+            private String nombre;
+            // Otros campos que devuelva tu API
+
+            public String getNoCuenta() {
+                return no_cuenta;
+            }
+
+            public String getNombre() {
+                return nombre;
+            }
         }
     }
+
 }

@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
     GridLayout maingrind;
+    TextView textViewWelcome;
+    TextView textViewAlumno;
+    TextView textViewNumCuenta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,22 @@ public class MenuActivity extends AppCompatActivity {
         // Configuración de eventos para cada elemento en el GridLayout
 
         setSingleEvent(maingrind);
+
+        textViewWelcome = findViewById(R.id.textView);
+        textViewAlumno = findViewById(R.id.textView2);
+        textViewNumCuenta = findViewById(R.id.textView9);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String noCuenta = intent.getStringExtra("no_cuenta");
+            String nombre = intent.getStringExtra("nombre");
+
+            if (noCuenta != null && nombre != null) {
+                textViewNumCuenta.setText(getString(R.string.txt_ncuentaMenu) + noCuenta);
+                textViewAlumno.setText(getString(R.string.txt_Alumno) + nombre);
+            }
+        }
+
     }
     // Método para manejar el botón de cerrar sesión
 

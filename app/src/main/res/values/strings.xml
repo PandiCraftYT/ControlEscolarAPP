@@ -4,8 +4,8 @@
     <string name="txt_Bienvendio">Bienvenido</string>
     <string name="cerrar">Cerrar Sesión</string>
     <string name="txt_ncuenta">Nº Cuenta</string>
-    <string name="txt_Alumno">Alumno: Carlos Nevarez</string>
-    <string name="txt_ncuentaMenu">Nº Cuenta: 17507995</string>
+    <string name="txt_Alumno">Alumno:</string>
+    <string name="txt_ncuentaMenu">Nº Cuenta:</string>
     <string name="txt_pass">NIP</string>
     <string name="txt_Kardex">Kardex</string>
     <string name="txt_Justificante">Solicitar Justificante</string>

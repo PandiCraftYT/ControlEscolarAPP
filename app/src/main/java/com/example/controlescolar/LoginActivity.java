@@ -58,7 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                     if (apiResponse != null && apiResponse.isSuccess()) {
                         // Inicio de sesión exitoso
                         Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MenuActivity.class));
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        intent.putExtra("no_cuenta", apiResponse.getData().getUser().getNoCuenta());
+                        intent.putExtra("nombre", apiResponse.getData().getUser().getNombre());
+                        startActivity(intent);
                     } else {
                         // Credenciales incorrectas
                         Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
