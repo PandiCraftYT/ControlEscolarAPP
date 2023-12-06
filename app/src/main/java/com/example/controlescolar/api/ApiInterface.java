@@ -1,4 +1,4 @@
-package com.example.controlescolar;
+package com.example.controlescolar.api;
 
 import com.google.gson.JsonObject;
 

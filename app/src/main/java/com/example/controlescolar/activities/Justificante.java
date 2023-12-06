@@ -1,4 +1,4 @@
-package com.example.controlescolar;
+package com.example.controlescolar.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+
+import com.example.controlescolar.R;
 
 import java.util.Calendar;
 

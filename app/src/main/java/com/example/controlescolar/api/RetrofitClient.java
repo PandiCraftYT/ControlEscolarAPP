@@ -1,4 +1,4 @@
-package com.example.controlescolar;
+package com.example.controlescolar.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

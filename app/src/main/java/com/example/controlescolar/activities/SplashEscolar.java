@@ -1,4 +1,4 @@
-package com.example.controlescolar;
+package com.example.controlescolar.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import com.example.controlescolar.R;
 
 public class SplashEscolar extends AppCompatActivity {
 

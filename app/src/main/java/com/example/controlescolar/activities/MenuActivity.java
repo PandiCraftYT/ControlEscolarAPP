@@ -1,4 +1,4 @@
-package com.example.controlescolar;
+package com.example.controlescolar.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.controlescolar.R;
 
 public class MenuActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.controlescolar;
+package com.example.controlescolar.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.controlescolar.R;
+import com.example.controlescolar.api.ApiInterface;
+import com.example.controlescolar.api.RetrofitClient;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
