@@ -16,10 +16,10 @@
         android:theme="@style/Theme.ControlEscolar"
         tools:targetApi="34">
         <activity
-            android:name=".Justificante"
+            android:name=".activities.Justificante"
             android:exported="false" />
         <activity
-            android:name=".SplashEscolar"
+            android:name=".activities.SplashEscolar"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
@@ -29,19 +29,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Credencial"
+            android:name=".activities.Credencial"
             android:exported="false" />
         <activity
-            android:name=".Estudio"
+            android:name=".activities.Estudio"
             android:exported="false" />
         <activity
-            android:name=".Kardex"
+            android:name=".activities.Kardex"
             android:exported="false" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".activities.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="false" />
     </application>
 
