@@ -51,8 +51,11 @@ public class MenuActivity extends AppCompatActivity {
     public void cerrarSesionBtn(View view){
         // Mostrar un mensaje al cerrar sesión y redirigir a la pantalla de inicio de sesión
 
-        Toast.makeText(this, "Has Cerrado Sesión con EXITÓ", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(MenuActivity.this, LoginActivity.class));
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finishAffinity(); // Finaliza todas las actividades
+
     }
     // Método para asignar eventos a los elementos del GridLayout
 
