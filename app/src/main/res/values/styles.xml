@@ -8,4 +8,10 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+    <!-- Estilo para el texto de la opción seleccionada -->
+    <style name="OpcionSeleccionadaStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <!-- Personaliza otros atributos según tu preferencia -->
+    </style>
 </resources>

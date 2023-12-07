@@ -10,8 +10,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.controlescolar.R;
@@ -30,12 +34,56 @@ public class Justificante extends AppCompatActivity {
     private String fechaDesde = "";
     private String fechaHasta = "";
     private boolean seleccionandoFechaDesde = true;
+    private TextView opcionSeleccionada;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_justificante);
+
+
+        Spinner spinnerOpciones = findViewById(R.id.spinnerOpciones);
+        opcionSeleccionada = findViewById(R.id.opcionSeleccionada);
+
+        // Crear un ArrayAdapter con el texto "MOTIVO" como primer elemento
+        String[] opciones = {"MOTIVO", "PERSONALES", "SALUD", "COVID-19"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones) {
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+
+                if (position == spinnerOpciones.getSelectedItemPosition()) {
+                    view.setBackgroundResource(R.drawable.spinner_selected_item_border);
+                } else {
+                    view.setBackgroundResource(android.R.color.transparent);
+                }
+
+                return view;
+            }
+        };
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerOpciones.setAdapter(adapter);
+
+        spinnerOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                opcionSeleccionada.setText("Opción seleccionada: " + selectedItem);
+                // Aplicar el estilo al texto de la opción seleccionada
+                opcionSeleccionada.setTextAppearance(R.style.OpcionSeleccionadaStyle);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Acción cuando no se selecciona nada en el Spinner (opcional)
+            }
+        });
+
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerOpciones.setAdapter(adapter);
         // Inicialización de vistas y asignación de listeners
         btnAdjuntarArchivo = findViewById(R.id.btnAdjuntarArchivo);
         btnEnviarSolicitud = findViewById(R.id.btnEnviarSolicitud);

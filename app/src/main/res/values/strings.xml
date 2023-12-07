@@ -19,5 +19,16 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="PROXIMAMENTE">PROXIMAMENTE</string>
+    <string name="fecha">Fecha a Justificar</string>
+    <string name="motivo">Decriba el motivo</string>
+    <string name="caso">Describa el motivo de su ausencia </string>
     <string name="DERECHOS">Desarrollado por ALUMNOS :: Informática \n® 2023 todos los derechos reservados</string>
+
+        <string-array name="Motivo">
+            <item>PERSONALES</item>
+            <item>SALUD</item>
+            <item>COVID-19</item>
+        </string-array>
+
+
 </resources>
