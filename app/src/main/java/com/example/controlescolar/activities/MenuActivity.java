@@ -100,7 +100,7 @@ public class MenuActivity extends AppCompatActivity {
                     } else if (finalI == 4) {
                         // Abre la actividad Justificante
 
-                        Intent intent = new Intent(MenuActivity.this, Justificante.class);
+                        Intent intent = new Intent(MenuActivity.this, MenuJustificante.class);
                         startActivity(intent);
                     }else {
                         // Muestra un mensaje si la opción no está disponible / en caso que tengamos otro cardview

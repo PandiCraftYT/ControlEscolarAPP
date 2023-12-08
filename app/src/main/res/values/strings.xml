@@ -21,14 +21,23 @@
     <string name="PROXIMAMENTE">PROXIMAMENTE</string>
     <string name="fecha">Fecha a Justificar</string>
     <string name="motivo">Decriba el motivo</string>
+    <string name="Adjuntar">Adjuntar Evidencia</string>
     <string name="caso">Describa el motivo de su ausencia </string>
+    <string name="justificante">Solicitar Justificante </string>
+    <string name="SeleccionarFecha">Seleccionar Fecha </string>
+    <string name="Historial">Historial de Justificantes </string>
+    <string name="solicitud">Enviar Solicitud</string>
+    <string name="Atras">Atras</string>
+    <string name="Opciónseleccionada">Opción seleccionada:</string>
+    <string name="SJ">Solicitud de Justificante</string>
+    <string name="SESIONJUSTIFICANTE">SESION DE JUSTIFICANTE</string>
     <string name="DERECHOS">Desarrollado por ALUMNOS :: Informática \n® 2023 todos los derechos reservados</string>
 
-        <string-array name="Motivo">
-            <item>PERSONALES</item>
-            <item>SALUD</item>
-            <item>COVID-19</item>
-        </string-array>
+    <string-array name="Motivo">
+        <item>PERSONALES</item>
+        <item>SALUD</item>
+        <item>COVID-19</item>
+    </string-array>
 
 
 </resources>

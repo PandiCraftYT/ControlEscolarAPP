@@ -41,8 +41,8 @@
 
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_width="46dp"
-                        android:layout_height="57dp"
+                        android:layout_width="62dp"
+                        android:layout_height="61dp"
                         android:layout_margin="4dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="32dp"
@@ -60,7 +60,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="12dp"
-                        android:text="Atras"
+                        android:text="@string/Atras"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         app:layout_constraintStart_toEndOf="@+id/imageView6"
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="68dp"
-        android:text="Solicitud de Justificante"
+        android:text="@string/SJ"
         android:textSize="50sp"
         android:textColor="@color/ColorFIC"
         android:textStyle="bold"
@@ -112,7 +112,7 @@
                 android:id="@+id/btnSelectDates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Seleccionar Fechas"
+                android:text="@string/SeleccionarFecha"
                 android:layout_marginBottom="16dp"
                 android:textColor="@color/white"
                 android:textColorHighlight="@color/white"
@@ -137,10 +137,10 @@
 
                 <Spinner
                     android:id="@+id/spinnerOpciones"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="173dp"
+                    android:layout_height="56dp"
                     android:layout_below="@id/opcionSeleccionada"
-                    android:layout_marginTop="-75dp"
+                    android:layout_marginTop="-94dp"
                     android:background="@drawable/boton_personalizado"
                     android:paddingStart="16dp"
                     android:paddingTop="12dp"
@@ -151,14 +151,14 @@
                     android:id="@+id/opcionSeleccionada"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Opción seleccionada:"
-                    android:textSize="18sp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="76dp"
+                    android:background="@drawable/eddittext_background"
+                    android:text="@string/Opciónseleccionada"
                     android:textColor="@android:color/black"
                     android:textColorHighlight="@color/white"
                     android:textColorHint="@color/white"
-                    android:layout_marginStart="6dp"
-                    android:background="@drawable/eddittext_background"
-                    android:layout_marginTop="56dp" />
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 
@@ -173,8 +173,8 @@
 
             <EditText
                 android:id="@+id/editTextRazonInasistencia"
-                android:layout_width="377dp"
-                android:layout_height="wrap_content"
+                android:layout_width="372dp"
+                android:layout_height="63dp"
                 android:background="@drawable/eddittext_background"
                 android:hint="@string/caso"
                 android:inputType="textMultiLine"
@@ -188,7 +188,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Adjuntar Evidencia"
+                android:text="@string/Adjuntar"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/ColorFIC"
@@ -199,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:layout_height="wrap_content"
-                android:text="Adjuntar Archivo"
+                android:text="@string/Adjuntar"
                 android:layout_marginBottom="16dp"/>
 
             <TextView
@@ -219,7 +219,7 @@
                 android:id="@+id/btnEnviarSolicitud"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enviar Solicitud"
+                android:text="@string/solicitud"
                 android:background="@drawable/eddittext_background"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="32dp"

@@ -6,15 +6,21 @@
 
     <application
         android:allowBackup="true"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/iconfic"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/iconfic"
         android:supportsRtl="true"
         android:theme="@style/Theme.ControlEscolar"
         tools:targetApi="34">
+        <activity
+            android:name=".activities.HistorialJustificante"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MenuJustificante"
+            android:exported="false" />
         <activity
             android:name=".activities.Justificante"
             android:exported="false" />
