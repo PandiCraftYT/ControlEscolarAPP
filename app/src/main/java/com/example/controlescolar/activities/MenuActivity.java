@@ -78,6 +78,8 @@ public class MenuActivity extends AppCompatActivity {
                         // Abre la actividad Kardex
 
                         Intent intent = new Intent(MenuActivity.this, Kardex.class);
+                        intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
+                        intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivity(intent);
                     } else if (finalI == 1) {
                         // Abre la actividad Estudio
