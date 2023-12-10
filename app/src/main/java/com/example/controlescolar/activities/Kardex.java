@@ -25,16 +25,13 @@ public class Kardex extends AppCompatActivity {
         // Obtén los datos del Intent o de donde sea que los tengas
         Intent intent = getIntent();
         if (intent != null) {
-            String nombre = intent.getStringExtra("nombre");
             String noCuenta = intent.getStringExtra("no_cuenta");
-            String carrera = intent.getStringExtra("carrera");
-            String semestre = intent.getStringExtra("semestre");
+            String nombre = intent.getStringExtra("nombre");
 
             // Actualiza las vistas con los datos
             textViewUserName.setText(nombre);
             textViewUserNoCuenta.setText(noCuenta);
-            textViewCarrera.setText(carrera);
-            textViewSemestre.setText(semestre);
+
         }
     }
 }
