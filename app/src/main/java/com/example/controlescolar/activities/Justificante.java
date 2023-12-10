@@ -120,10 +120,11 @@ public class Justificante extends AppCompatActivity {
     // Método para manejar la acción de retroceder
 
     public void Atras(View view){
+
         Intent intent = new Intent(Justificante.this, MenuJustificante.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finishAffinity();
+        // Para finalizar esta actividad después de pasar a la nueva actividad
+        finish();
     }
     // Método para adjuntar un archivo
 

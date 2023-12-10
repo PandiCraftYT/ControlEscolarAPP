@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MenuKardex"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnMostrarInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:onClick="toggleInfoVisibility"
+            android:text="INFORMATICA"
+            android:textColor="@color/white"/>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnMostrarInfo"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/infoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textNumero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onNumeroClick"
+                android:textColor="@color/black"
+                android:text="2700"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="FACULTAD DE INFORMATICA DE CULIACAN"
+                android:textSize="18sp"
+                android:textStyle="italic"/>
+            <!-- Contenido informativo -->
+            <Button
+                android:id="@+id/btnCarrera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CARRERA"
+                android:textColor="@color/white"
+                android:onClick="onCarreraButtonClick"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 LICENCIATURA EN INFORMÁTICA"
+                android:textColor="@color/black"/>
+
+
+            <Button
+                android:id="@+id/btnPlanEstudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PLAN EST."
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="4"/>
+
+            <Button
+                android:id="@+id/btnPeriodo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="PERIODO"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="5"/>
+
+            <Button
+                android:id="@+id/btnGrupo"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GRUPO"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="4"/>
+
+            <Button
+                android:id="@+id/btnVigencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="VIGENCIA"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="A"/>
+        </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

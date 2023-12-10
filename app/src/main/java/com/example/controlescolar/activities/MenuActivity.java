@@ -77,7 +77,7 @@ public class MenuActivity extends AppCompatActivity {
                     if(finalI ==0){
                         // Abre la actividad Kardex
 
-                        Intent intent = new Intent(MenuActivity.this, Kardex.class);
+                        Intent intent = new Intent(MenuActivity.this, MenuKardex.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivity(intent);
@@ -85,11 +85,14 @@ public class MenuActivity extends AppCompatActivity {
                         // Abre la actividad Estudio
 
                         Intent intent = new Intent(MenuActivity.this, Estudio.class);
+                        intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
+                        intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivity(intent);
                     } else if (finalI == 2) {
                         // Abre la actividad Credencial
-
                         Intent intent = new Intent(MenuActivity.this, Credencial.class);
+                        intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
+                        intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivity(intent);
                     } else if (finalI == 3) {
                         // Abre un navegador web con la URL proporcionada
@@ -101,8 +104,9 @@ public class MenuActivity extends AppCompatActivity {
 
                     } else if (finalI == 4) {
                         // Abre la actividad Justificante
-
                         Intent intent = new Intent(MenuActivity.this, MenuJustificante.class);
+                        intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
+                        intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivity(intent);
                     }else {
                         // Muestra un mensaje si la opción no está disponible / en caso que tengamos otro cardview

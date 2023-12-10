@@ -146,16 +146,16 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="90dp"
+                        android:layout_width="87dp"
+                        android:layout_height="82dp"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/txt_Kardex"
 
-                        android:src="@drawable/kardex"></ImageView>
+                        android:src="@drawable/kardex" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="54dp"
                         android:layout_gravity="center_horizontal"
                         android:text="@string/txt_Kardex"
                         android:textAlignment="center"
@@ -194,7 +194,7 @@
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/txt_Estudio"
                         android:src="@drawable/realimentacion"
-                        ></ImageView>
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -236,7 +236,7 @@
                         android:layout_height="90dp"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/txt_Credencil"
-                        android:src="@drawable/cliente"></ImageView>
+                        android:src="@drawable/cliente"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -278,7 +278,7 @@
                         android:layout_height="90dp"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/txt_Calendario"
-                        android:src="@drawable/calendario"></ImageView>
+                        android:src="@drawable/calendario"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -320,7 +320,7 @@
                         android:layout_height="90dp"
                         android:layout_gravity="center_horizontal"
                         android:contentDescription="@string/txt_Calendario"
-                        android:src="@drawable/justificante"></ImageView>
+                        android:src="@drawable/justificante"/>
 
                     <TextView
                         android:layout_width="wrap_content"

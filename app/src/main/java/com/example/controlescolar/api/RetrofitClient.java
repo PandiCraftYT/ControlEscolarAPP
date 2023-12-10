@@ -2,6 +2,7 @@ package com.example.controlescolar.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
 
 public class RetrofitClient {
     private static final String BASE_URL = "https://controlescolarfic2023.000webhostapp.com/";

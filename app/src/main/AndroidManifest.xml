@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ControlEscolar"
         tools:targetApi="34">
         <activity
+            android:name=".activities.MenuKardex"
+            android:exported="false" />
+        <activity
             android:name=".activities.HistorialJustificante"
             android:exported="false" />
         <activity

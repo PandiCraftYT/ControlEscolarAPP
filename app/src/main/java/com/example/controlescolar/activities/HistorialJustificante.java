@@ -17,8 +17,6 @@ public class HistorialJustificante extends AppCompatActivity {
     }
     public void Atras(View view){
         Intent intent = new Intent(HistorialJustificante.this, MenuJustificante.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finishAffinity();
     }
 }
