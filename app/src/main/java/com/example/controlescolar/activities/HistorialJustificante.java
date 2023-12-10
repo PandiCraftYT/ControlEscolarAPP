@@ -15,8 +15,11 @@ public class HistorialJustificante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_justificante);
     }
+
     public void Atras(View view){
         Intent intent = new Intent(HistorialJustificante.this, MenuJustificante.class);
+        intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
+        intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
         startActivity(intent);
     }
 }

@@ -33,6 +33,12 @@ public class MenuKardex extends AppCompatActivity {
         }
     }
 
+    public void Atras(View view){
+        Intent intent = new Intent(MenuKardex.this, MenuActivity.class);
+        intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
+        intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
+        startActivity(intent);
+    }
     public void toggleInfoVisibility(View view) {
         if (scrollView.getVisibility() == View.VISIBLE) {
             scrollView.setVisibility(View.GONE);

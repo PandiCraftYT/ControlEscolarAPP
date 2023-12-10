@@ -43,6 +43,7 @@ public class Justificante extends AppCompatActivity {
         setContentView(R.layout.activity_justificante);
 
 
+
         Spinner spinnerOpciones = findViewById(R.id.spinnerOpciones);
         opcionSeleccionada = findViewById(R.id.opcionSeleccionada);
 
@@ -122,6 +123,8 @@ public class Justificante extends AppCompatActivity {
     public void Atras(View view){
 
         Intent intent = new Intent(Justificante.this, MenuJustificante.class);
+        intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
+        intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
         startActivity(intent);
         // Para finalizar esta actividad después de pasar a la nueva actividad
         finish();

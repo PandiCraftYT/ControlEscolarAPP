@@ -34,4 +34,13 @@ public class Kardex extends AppCompatActivity {
 
         }
     }
+    public void Atras(View view){
+
+        Intent intent = new Intent(Kardex.this, MenuKardex.class);
+        intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
+        intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
+        startActivity(intent);
+        // Para finalizar esta actividad después de pasar a la nueva actividad
+        finish();
+    }
 }
