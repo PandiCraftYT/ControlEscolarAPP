@@ -20,16 +20,14 @@ public class MenuKardex extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_kardex);
-
         scrollView = findViewById(R.id.scrollView);
         infoLayout = findViewById(R.id.infoLayout);
 
-        // Recuperar datos del Intent
+        // Obtén los datos del Intent o de donde sea que los tengas
         Intent intent = getIntent();
         if (intent != null) {
             String noCuenta = intent.getStringExtra("no_cuenta");
             String nombre = intent.getStringExtra("nombre");
-
         }
     }
 
@@ -38,6 +36,8 @@ public class MenuKardex extends AppCompatActivity {
         intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
         intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
         startActivity(intent);
+        // Para finalizar esta actividad después de pasar a la nueva actividad
+        finish();
     }
     public void toggleInfoVisibility(View view) {
         if (scrollView.getVisibility() == View.VISIBLE) {

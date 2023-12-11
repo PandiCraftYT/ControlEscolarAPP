@@ -2,6 +2,6 @@
 
     <shape xmlns:android="http://schemas.android.com/apk/res/android">
         <solid android:color="@color/gris" /> <!-- Color de fondo, ajusta ARGB según tu preferencia -->
-        <corners android:radius="10dp" /> <!-- Radio de las esquinas del rectángulo -->
+        <corners android:radius="40dp" /> <!-- Radio de las esquinas del rectángulo -->
     </shape>
 

@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_info" />
+        app:srcCompat="@drawable/background" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -55,7 +55,8 @@
                             android:layout_height="wrap_content"
                             android:contentDescription="@string/Atras"
                             android:onClick="Atras"
-                            android:src="@drawable/atras" />
+                            android:src="@drawable/atras"
+                            android:scaleType="center"/>
 
                         <!-- Texto al lado de la imagen -->
                         <TextView

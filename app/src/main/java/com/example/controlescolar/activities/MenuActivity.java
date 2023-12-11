@@ -84,7 +84,7 @@ public class MenuActivity extends AppCompatActivity {
                     } else if (finalI == 1) {
                         // Abre la actividad Estudio
 
-                        Intent intent = new Intent(MenuActivity.this, Estudio.class);
+                        Intent intent = new Intent(MenuActivity.this, MenuConstancia.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivity(intent);
