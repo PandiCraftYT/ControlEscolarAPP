@@ -1,7 +1,10 @@
 package com.example.controlescolar.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import android.app.Activity;
 import android.net.Uri;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,6 +61,24 @@ public class MenuActivity extends AppCompatActivity {
         finishAffinity(); // Finaliza todas las actividades
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) { // Verifica el requestCode que usaste en startActivityForResult()
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    String noCuenta = data.getStringExtra("no_cuenta");
+                    String nombre = data.getStringExtra("nombre");
+
+                    // Usa los datos obtenidos como sea necesario
+                    // Por ejemplo:
+                    textViewNumCuenta.setText(noCuenta);
+                    textViewAlumno.setText(nombre);
+                }
+            }
+        }
+    }
     // Método para asignar eventos a los elementos del GridLayout
 
     private void setSingleEvent(GridLayout maingrind) {
@@ -81,20 +102,20 @@ public class MenuActivity extends AppCompatActivity {
                         Intent intent = new Intent(MenuActivity.this, MenuKardex.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
-                        startActivity(intent);
+                        startActivityForResult(intent, 1); // 1 es el requestCode
                     } else if (finalI == 1) {
                         // Abre la actividad Estudio
 
                         Intent intent = new Intent(MenuActivity.this, MenuConstancia.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
-                        startActivity(intent);
+                        startActivityForResult(intent, 1); // 1 es el requestCode
                     } else if (finalI == 2) {
                         // Abre la actividad Credencial
                         Intent intent = new Intent(MenuActivity.this, Credencial.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
-                        startActivity(intent);
+                        startActivityForResult(intent, 1); // 1 es el requestCode
                     } else if (finalI == 3) {
                         // Abre un navegador web con la URL proporcionada
 
@@ -104,11 +125,11 @@ public class MenuActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     } else if (finalI == 4) {
-                        // Abre la actividad Justificante
                         Intent intent = new Intent(MenuActivity.this, MenuJustificante.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
-                        startActivity(intent);
+                        startActivityForResult(intent, 1); // 1 es el requestCode
+
                     }else {
                         // Muestra un mensaje si la opción no está disponible / en caso que tengamos otro cardview
 
@@ -118,6 +139,7 @@ public class MenuActivity extends AppCompatActivity {
                 }
 
             });
+
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.controlescolar.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,11 +26,10 @@ public class MenuConstancia extends AppCompatActivity {
 
     }
     public void Atras(View view){
-        Intent intent = new Intent(MenuConstancia.this, MenuActivity.class);
-        intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
-        intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
-        startActivity(intent);
-        // Para finalizar esta actividad después de pasar a la nueva actividad
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
+        returnIntent.putExtra("nombre", getIntent().getStringExtra("nombre"));
+        setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
     public void toggleInfoVisibility(View view) {
