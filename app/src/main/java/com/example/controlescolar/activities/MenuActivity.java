@@ -41,7 +41,8 @@ public class MenuActivity extends AppCompatActivity {
 
             if (noCuenta != null && nombre != null) {
                 textViewNumCuenta.setText(getString(R.string.txt_ncuentaMenu) + noCuenta);
-                textViewAlumno.setText(getString(R.string.txt_Alumno) + nombre);
+                textViewAlumno.setText(getString(R.string.txt_Alumno) + "\n" + nombre);
+
             }
         }
 
