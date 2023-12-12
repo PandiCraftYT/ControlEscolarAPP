@@ -16,6 +16,12 @@ public interface ApiInterface {
     @POST("api/android/solicitudconstancia")
     Call<SolicitudConstanciaResponse> solicitudConstancia(@Body JsonObject body);
 
+    @POST("api/android/solicitudjustificante")
+    Call<SolicitudJustificanteResponse> solicitudJustificante(@Body JsonObject body);
+
+
+
+
     public class ApiResponse {
         private boolean success;
         private String message;
@@ -135,4 +141,80 @@ public interface ApiInterface {
             return fecha_solicitud;
         }
     }
+
+
+    public class SolicitudJustificanteResponse {
+        private String status;
+        private SolicitudJustificanteData data;
+
+        public String getStatus() {
+            return status;
+        }
+
+        public SolicitudJustificanteData getData() {
+            return data;
+        }
+    }
+
+    public class SolicitudJustificanteData {
+        private String user;
+        private List<Justificante> justificantesSolicitados;
+
+        public String getUser() {
+            return user;
+        }
+
+        public List<Justificante> getJustificantesSolicitados() {
+            return justificantesSolicitados;
+        }
+    }
+
+    public class Justificante {
+        private String folio;
+        private String fecha_solicitud;
+        private String fecha_justificar;
+        private String motivo;
+        private String descripcion_motivo;
+        private String estado;
+        private String no_cuenta;
+        private String archivo_nombre;
+        private String archivo_data;
+
+        public String getFolio() {
+            return folio;
+        }
+
+        public String getFechaSolicitud() {
+            return fecha_solicitud;
+        }
+
+        public String getFechaJustificar() {
+            return fecha_justificar;
+        }
+
+        public String getMotivo() {
+            return motivo;
+        }
+
+        public String getDescripcionMotivo() {
+            return descripcion_motivo;
+        }
+
+        public String getEstado() {
+            return estado;
+        }
+
+        public String getNoCuenta() {
+            return no_cuenta;
+        }
+
+        public String getArchivoNombre() {
+            return archivo_nombre;
+        }
+
+        public String getArchivoData() {
+            return archivo_data;
+        }
+    }
+
 }

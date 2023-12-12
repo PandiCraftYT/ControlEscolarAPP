@@ -6,60 +6,112 @@
     android:layout_height="match_parent"
     tools:context=".activities.HistorialJustificante"
     android:background="@color/white">
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/ColorFIC"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    android:elevation="18dp">
+
+                    <!-- Imagen a la izquierda -->
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/Atras"
+                        android:onClick="Atras"
+                        android:src="@drawable/atras" />
+
+                    <!-- Texto al lado de la imagen -->
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Atrás"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:layout_marginStart="16dp"
+                        android:drawablePadding="8dp"
+                        />
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <TextView
+                android:id="@+id/textViewNoCuenta"
+                android:text=""
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/ColorFIC"
-                android:orientation="vertical">
-
-                <com.google.android.material.appbar.AppBarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-                    <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/toolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:background="?attr/colorPrimary"
-                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                        android:elevation="18dp">
-
-                        <!-- Imagen a la izquierda -->
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/Atras"
-                            android:onClick="Atras"
-                            android:src="@drawable/atras" />
-
-                        <!-- Texto al lado de la imagen -->
-                        <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Atrás"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:layout_marginStart="16dp"
-                            android:drawablePadding="8dp"
-                            />
-                    </androidx.appcompat.widget.Toolbar>
-                </com.google.android.material.appbar.AppBarLayout>
-
-
-            </LinearLayout>
+                />
         </LinearLayout>
-    </ScrollView>
+
+        <!-- TableLayout con encabezados -->
+        <TableLayout
+            android:id="@+id/tableLayoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <!-- Encabezados de la tabla -->
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Folio"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:padding="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha Solicitud"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:padding="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:padding="12dp"/>
+
+                <!-- Agrega más encabezados según tus necesidades -->
+
+            </TableRow>
+        </TableLayout>
+
+        <!-- TableLayout para los datos -->
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <!-- Aquí se agregarán las filas de la tabla dinámicamente desde el código Java -->
+        </TableLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

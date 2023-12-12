@@ -74,6 +74,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textViewNoCuenta"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
