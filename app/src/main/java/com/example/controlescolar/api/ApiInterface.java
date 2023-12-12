@@ -19,7 +19,11 @@ public interface ApiInterface {
     @POST("api/android/solicitudjustificante")
     Call<SolicitudJustificanteResponse> solicitudJustificante(@Body JsonObject body);
 
+    @POST("api/android/guardarsolicitudconstanciaandroid")
+    Call<GuardarSolicitudConstanciaAndroidResponse> guardarSolicitudConstanciaAndroid(@Body JsonObject body);
 
+    @POST("api/android/guardarsolicitudjustificanteandroid")
+    Call<GuardarSolicitudJustificanteAndroidResponse> guardarSolicitudJustificanteAndroid(@Body JsonObject body);
 
 
     public class ApiResponse {
@@ -214,6 +218,32 @@ public interface ApiInterface {
 
         public String getArchivoData() {
             return archivo_data;
+        }
+    }
+
+    public class GuardarSolicitudConstanciaAndroidResponse {
+        private String status;
+        private String message;
+
+        public String getStatus() {
+            return status;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
+
+    public class GuardarSolicitudJustificanteAndroidResponse {
+        private String status;
+        private String message;
+
+        public String getStatus() {
+            return status;
+        }
+
+        public String getMessage() {
+            return message;
         }
     }
 

@@ -69,6 +69,12 @@
                             android:layout_marginStart="16dp"
                             android:drawablePadding="8dp"
                             />
+                        <TextView
+                            android:id="@+id/textViewNoCuenta"
+                            android:visibility="invisible"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
                     </androidx.appcompat.widget.Toolbar>
                 </com.google.android.material.appbar.AppBarLayout>
 

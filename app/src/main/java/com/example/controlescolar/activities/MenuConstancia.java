@@ -15,6 +15,8 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.controlescolar.R;
 import com.example.controlescolar.api.ApiInterface;
 import com.example.controlescolar.api.RetrofitClient;
@@ -153,9 +155,8 @@ public class MenuConstancia extends AppCompatActivity {
             nuevoBoton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Acción a realizar al hacer clic en el botón
-                    Intent intent = new Intent(MenuConstancia.this, Estudio.class); // Reemplaza NuevaActividad con el nombre de tu actividad de destino
-                    startActivity(intent);
+                    // Llamar al método para solicitar constancia
+                    solicitarConstancia();
                 }
             });
 
@@ -166,5 +167,58 @@ public class MenuConstancia extends AppCompatActivity {
             botonAgregado = true;
         }
     }
+
+    // Método para realizar la llamada a la API al solicitar constancia
+    private void solicitarConstancia() {
+        String noCuenta = textViewNoCuenta.getText().toString();
+
+        if (noCuenta != null && !noCuenta.isEmpty()) {
+            JsonObject jsonBody = new JsonObject();
+            jsonBody.addProperty("no_cuenta", noCuenta);
+
+            // Hacer la llamada a la API para guardar la solicitud de constancia
+            Call<ApiInterface.GuardarSolicitudConstanciaAndroidResponse> call = apiInterface.guardarSolicitudConstanciaAndroid(jsonBody);
+            call.enqueue(new Callback<ApiInterface.GuardarSolicitudConstanciaAndroidResponse>() {
+                @Override
+                public void onResponse(Call<ApiInterface.GuardarSolicitudConstanciaAndroidResponse> call, Response<ApiInterface.GuardarSolicitudConstanciaAndroidResponse> response) {
+                    if (response.isSuccessful()) {
+                        // Procesar la respuesta
+                        ApiInterface.GuardarSolicitudConstanciaAndroidResponse guardarResponse = response.body();
+                        if (guardarResponse.getStatus().equals("success")) {
+                            // Si la solicitud se realiza con éxito, muestra un Toast indicando que la solicitud fue enviada
+                            showToast("Solicitud Enviada");
+                            recreate();
+                        } else {
+                            // Manejar el caso en que la solicitud no se pueda realizar
+                            showToast("No puedes tener más de dos solicitudes activas a la vez");
+                            Log.e(TAG, "Error al solicitar constancia: " + guardarResponse.getMessage());
+                        }
+                    } else {
+                        // Manejar el error en la respuesta del servidor
+                        showToast("Error en la respuesta del servidor al solicitar constancia");
+                        Log.e(TAG, "Error en la respuesta del servidor al solicitar constancia");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ApiInterface.GuardarSolicitudConstanciaAndroidResponse> call, Throwable t) {
+                    // Manejar el error en la llamada a la API
+                    showToast("Error al solicitar constancia. Verifica tu conexión a Internet.");
+                    Log.e(TAG, "Error en la llamada a la API al solicitar constancia", t);
+                }
+            });
+        } else {
+            // Manejar el caso en que no se pueda obtener el número de cuenta
+            showToast("No se pudo obtener el número de cuenta para solicitar constancia");
+            Log.e(TAG, "No se pudo obtener el número de cuenta para solicitar constancia");
+        }
+    }
+
+    // Método para mostrar un Toast con el mensaje especificado
+    private void showToast(String message) {
+        Toast.makeText(MenuConstancia.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+
 
 }
