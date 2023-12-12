@@ -5,7 +5,10 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -97,29 +100,102 @@ public class MenuConstancia extends AppCompatActivity {
         // Obtener la lista de constancias
         List<ApiInterface.Constancia> constancias = constanciaResponse.getData().getConstanciasSolicitadas();
 
-        // Recorrer la lista y mostrar los datos en la tabla
+        // Obtener la referencia al layout de la tabla
+        TableLayout tableLayout = findViewById(R.id.tableLayout); // Asegúrate de tener un TableLayout en tu XML con el id "tableLayout"
+
+        // Iterar sobre la lista de constancias y agregar filas a la tabla
         for (ApiInterface.Constancia constancia : constancias) {
-            // Crear nuevas vistas para cada fila de la tabla
-            TableRow newRow = new TableRow(MenuConstancia.this);
-            TextView folioTextView = new TextView(MenuConstancia.this);
-            TextView estadoTextView = new TextView(MenuConstancia.this);
-            TextView fechaTextView = new TextView(MenuConstancia.this);
+            TableRow row = new TableRow(this);
+            TableRow.LayoutParams rowLayoutParams = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.WRAP_CONTENT
+            );
+            rowLayoutParams.setMargins(0, 12, 0, 12); // Ajustar márgenes entre filas
+            row.setLayoutParams(rowLayoutParams);
 
-            // Configurar los textos con los datos de la constancia actual
-            folioTextView.setText(constancia.getFolio());
-            estadoTextView.setText(constancia.getEstado());
-            fechaTextView.setText(constancia.getFechaSolicitud());
+            // Establecer el color de fondo dependiendo del estado
+            int backgroundColor;
+            switch (constancia.getEstado()) {
+                case "aceptado":
+                    backgroundColor = Color.GREEN; // Color verde para estado "ACEPTADO"
+                    break;
+                case "rechazado":
+                    backgroundColor = Color.RED; // Color rojo para estado "RECHAZADO"
+                    break;
+                default:
+                    backgroundColor = Color.GRAY; // Color gris para estado "PENDIENTE"
+                    break;
+            }
+            row.setBackgroundColor(backgroundColor);
 
-            // Agregar las vistas a la fila
-            newRow.addView(folioTextView);
-            newRow.addView(estadoTextView);
-            newRow.addView(fechaTextView);
+            // Crear y configurar TextView para mostrar el valor del folio
+            TextView folioTextView = new TextView(this);
+            folioTextView.setText("FOLIO:\n" + constancia.getFolio());
+            folioTextView.setTextSize(20); // Tamaño del texto
+            folioTextView.setTextColor(Color.BLACK); // Color del texto
+            folioTextView.setPadding(24, 12, 24, 12); // Padding del texto
+            row.addView(folioTextView);
 
-            // Obtener la tabla y agregar la nueva fila
-            TableLayout table = findViewById(R.id.tableLayout); // Asegúrate de tener un TableLayout en tu XML con el id "tableLayout"
-            table.addView(newRow);
+            // Crear y configurar TextView para mostrar el valor del estado
+            TextView estadoTextView = new TextView(this);
+            estadoTextView.setText("ESTADO:\n" + constancia.getEstado());
+            estadoTextView.setTextSize(20); // Tamaño del texto
+            estadoTextView.setTextColor(Color.BLACK); // Color del texto
+            estadoTextView.setPadding(24, 12, 24, 12); // Padding del texto
+            row.addView(estadoTextView);
+
+            // Crear y configurar TextView para mostrar el valor de la fecha de solicitud
+            TextView fechaSolicitudTextView = new TextView(this);
+            fechaSolicitudTextView.setText("FECHA SOLICITUD:\n" + constancia.getFechaSolicitud());
+            fechaSolicitudTextView.setTextSize(20); // Tamaño del texto
+            fechaSolicitudTextView.setTextColor(Color.BLACK); // Color del texto
+            fechaSolicitudTextView.setPadding(24, 12, 24, 12); // Padding del texto
+            row.addView(fechaSolicitudTextView);
+
+            // Agregar la fila a la tabla
+            tableLayout.addView(row);
+
+            // Agregar un espacio en blanco al final de cada fila para separar visualmente los datos
+            View separatorView = new View(this);
+            TableRow.LayoutParams separatorParams = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    20 // Altura del espacio en blanco (puedes ajustar este valor según la separación deseada)
+            );
+            separatorView.setLayoutParams(separatorParams);
+            tableLayout.addView(separatorView);
+
+            // Dentro del bucle for, después de crear la fila y establecer su color de fondo
+            if (constancia.getEstado().equals("aceptado")) {
+                row.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Mostrar la alerta
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MenuConstancia.this);
+                        builder.setTitle("Descargar Archivo")
+                                .setMessage("¿Quieres descargar este archivo?")
+                                .setPositiveButton("Sí", new DialogInterface.OnClickListener(){
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Acción al presionar "Sí"
+                                        // Redirigir a otra actividad
+                                        Intent intent = new Intent(MenuConstancia.this, Estudio.class);
+                                        // Puedes enviar datos adicionales si es necesario
+                                        intent.putExtra("folio", constancia.getFolio());
+                                        startActivity(intent);
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Acción al presionar "No"
+                                        dialog.dismiss(); // Cierra la alerta
+                                    }
+                                })
+                                .show();
+                    }
+                });
+            }
         }
     }
+
 
     public void Atras(View view){
         Intent returnIntent = new Intent();

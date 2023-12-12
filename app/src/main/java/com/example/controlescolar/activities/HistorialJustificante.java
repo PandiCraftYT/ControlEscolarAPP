@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -84,24 +85,51 @@ public class HistorialJustificante extends AppCompatActivity {
         // Iterar sobre la lista de justificantes y agregar filas a la tabla
         for (ApiInterface.Justificante justificante : justificantes) {
             TableRow row = new TableRow(this);
+            TableRow.LayoutParams rowLayoutParams = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.WRAP_CONTENT
+            );
+            rowLayoutParams.setMargins(0, 12, 0, 12); // Ajustar márgenes entre filas
+            row.setLayoutParams(rowLayoutParams);
 
-            // Crear textviews para cada columna
+            // Establecer un fondo para la fila
+            row.setBackgroundResource(R.drawable.background_info); // Reemplaza R.drawable.background_row con el nombre de tu fondo
+
+            // Crear TextView para mostrar el valor del folio con salto de línea
             TextView folioTextView = new TextView(this);
-            folioTextView.setText(justificante.getFolio());
+            folioTextView.setText("FOLIO:\n" + justificante.getFolio());
+            folioTextView.setTextSize(20); // Tamaño del texto
+            folioTextView.setTextColor(Color.BLACK); // Color del texto
+            folioTextView.setPadding(0, 12, 24, 12); // Padding del texto
             row.addView(folioTextView);
 
+            // Crear TextView para mostrar el valor de la fecha de solicitud con salto de línea
             TextView fechaSolicitudTextView = new TextView(this);
-            fechaSolicitudTextView.setText(justificante.getFechaSolicitud());
+            fechaSolicitudTextView.setText("FECHA SOLICITUD:\n" + justificante.getFechaSolicitud());
+            fechaSolicitudTextView.setTextSize(20); // Tamaño del texto
+            fechaSolicitudTextView.setTextColor(Color.BLACK); // Color del texto
+            fechaSolicitudTextView.setPadding(0, 12, 24, 12); // Padding del texto
             row.addView(fechaSolicitudTextView);
 
+            // Crear TextView para mostrar el valor del estado con salto de línea
             TextView estadoTextView = new TextView(this);
-            estadoTextView.setText(justificante.getEstado());
+            estadoTextView.setText("ESTADO:\n" + justificante.getEstado());
+            estadoTextView.setTextSize(20); // Tamaño del texto
+            estadoTextView.setTextColor(Color.BLACK); // Color del texto
+            estadoTextView.setPadding(0, 12, 24, 12); // Padding del texto
             row.addView(estadoTextView);
-
-
 
             // Agregar la fila a la tabla
             tableLayout.addView(row);
+
+            // Agregar un espacio en blanco al final de cada fila para separar visualmente los datos
+            View separatorView = new View(this);
+            TableRow.LayoutParams separatorParams = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    20 // Altura del espacio en blanco (puedes ajustar este valor según la separación deseada)
+            );
+            separatorView.setLayoutParams(separatorParams);
+            tableLayout.addView(separatorView);
         }
     }
 

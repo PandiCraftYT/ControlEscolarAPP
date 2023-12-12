@@ -129,7 +129,7 @@ public class MenuActivity extends AppCompatActivity {
                         startActivityForResult(intent, 1); // 1 es el requestCode
                     } else if (finalI == 2) {
                         // Abre la actividad Credencial
-                        Intent intent = new Intent(MenuActivity.this, Credencial.class);
+                        Intent intent = new Intent(MenuActivity.this, MenuJustificante.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivityForResult(intent, 1); // 1 es el requestCode
@@ -142,7 +142,7 @@ public class MenuActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     } else if (finalI == 4) {
-                        Intent intent = new Intent(MenuActivity.this, MenuJustificante.class);
+                        Intent intent = new Intent(MenuActivity.this, Credencial.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
                         startActivityForResult(intent, 1); // 1 es el requestCode

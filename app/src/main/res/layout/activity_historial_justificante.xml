@@ -68,48 +68,37 @@
             android:id="@+id/tableLayoutHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="60dp"
+            android:gravity="center">
 
-            <!-- Encabezados de la tabla -->
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Folio"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:padding="12dp"/>
+            <!-- Encabezado de la tabla -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fecha Solicitud"
+                    android:padding="12dp"
+                    android:text="JUSTIFICANTES SOLICITADOS"
                     android:textColor="@color/black"
                     android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:padding="12dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Estado"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:padding="12dp"/>
+                    android:textStyle="bold" />
 
                 <!-- Agrega más encabezados según tus necesidades -->
 
             </TableRow>
         </TableLayout>
 
+
         <!-- TableLayout para los datos -->
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="30dp"
+            android:padding="12dp"> <!-- Agregar padding para espaciar los datos -->
 
             <!-- Aquí se agregarán las filas de la tabla dinámicamente desde el código Java -->
         </TableLayout>
