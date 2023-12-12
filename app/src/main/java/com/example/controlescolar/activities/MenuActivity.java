@@ -1,5 +1,7 @@
 package com.example.controlescolar.activities;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,6 +10,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -22,6 +25,12 @@ public class MenuActivity extends AppCompatActivity {
     TextView textViewWelcome;
     TextView textViewAlumno;
     TextView textViewNumCuenta;
+
+    TextView textViewGrupo;
+
+    TextView textViewSemestre;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,16 +45,19 @@ public class MenuActivity extends AppCompatActivity {
         textViewWelcome = findViewById(R.id.textView);
         textViewAlumno = findViewById(R.id.textView2);
         textViewNumCuenta = findViewById(R.id.textView9);
-
+        textViewGrupo = findViewById(R.id.textViewgrupo);
+        textViewSemestre = findViewById(R.id.textViewsemestre);
         Intent intent = getIntent();
         if (intent != null) {
             String noCuenta = intent.getStringExtra("no_cuenta");
             String nombre = intent.getStringExtra("nombre");
-
+            String Grupo = intent.getStringExtra("grupo_id");
+            String Semestre = intent.getStringExtra("semestre_id");
             if (noCuenta != null && nombre != null) {
-                textViewNumCuenta.setText(getString(R.string.txt_ncuentaMenu) + noCuenta);
+                textViewNumCuenta.setText(noCuenta);
                 textViewAlumno.setText(getString(R.string.txt_Alumno) + "\n" + nombre);
-
+                textViewGrupo.setText(Grupo);
+                textViewSemestre.setText(Semestre);
             }
         }
 
@@ -75,6 +87,7 @@ public class MenuActivity extends AppCompatActivity {
                     // Por ejemplo:
                     textViewNumCuenta.setText(noCuenta);
                     textViewAlumno.setText(nombre);
+
                 }
             }
         }
@@ -109,6 +122,10 @@ public class MenuActivity extends AppCompatActivity {
                         Intent intent = new Intent(MenuActivity.this, MenuConstancia.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
+                        intent.putExtra("grupo_id", textViewGrupo.getText().toString());
+                        intent.putExtra("semestre_id", textViewSemestre.getText().toString());
+                        Log.d(TAG, "grupoId: " + textViewGrupo);
+                        Log.d(TAG, "semestreId: " + textViewSemestre);
                         startActivityForResult(intent, 1); // 1 es el requestCode
                     } else if (finalI == 2) {
                         // Abre la actividad Credencial

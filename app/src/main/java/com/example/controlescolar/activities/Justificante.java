@@ -189,13 +189,8 @@ public class Justificante extends AppCompatActivity {
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        if (seleccionandoFechaDesde) {
-                            fechaDesde = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                            seleccionandoFechaDesde = false;
-                        } else {
-                            fechaHasta = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                            mostrarFechasSeleccionadas();
-                        }
+                        fechaDesde = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                        mostrarFechasSeleccionadas();
                     }
                 },
                 year, month, day
@@ -203,21 +198,19 @@ public class Justificante extends AppCompatActivity {
 
         datePickerDialog.show();
     }
+
     // Método para mostrar las fechas seleccionadas
 
     private void mostrarFechasSeleccionadas() {
-        if (!fechaDesde.isEmpty() && !fechaHasta.isEmpty()) {
-            String textoFechas = "DE: " + fechaDesde + " A: " + fechaHasta;
+        if (!fechaDesde.isEmpty()) {
+            String textoFechas = "Fecha seleccionada: " + fechaDesde;
             txtFechasSeleccionadas.setText(textoFechas);
             txtFechasSeleccionadas.setVisibility(View.VISIBLE);
-            reiniciarFechas();
         }
     }
     // Método para reiniciar las fechas seleccionadas
 
     private void reiniciarFechas() {
         fechaDesde = "";
-        fechaHasta = "";
-        seleccionandoFechaDesde = true;
     }
 }

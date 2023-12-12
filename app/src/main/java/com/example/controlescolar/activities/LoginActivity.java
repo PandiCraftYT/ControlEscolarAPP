@@ -64,6 +64,11 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                         intent.putExtra("no_cuenta", apiResponse.getData().getUser().getNoCuenta());
                         intent.putExtra("nombre", apiResponse.getData().getUser().getNombre());
+                        intent.putExtra("unidad_academica_id", apiResponse.getData().getUser().getUnidadAcademicaId());
+                        intent.putExtra("carrera_id", apiResponse.getData().getUser().getCarreraId());
+                        intent.putExtra("plan_estudio_id", apiResponse.getData().getUser().getPlanEstudioId());
+                        intent.putExtra("grupo_id", apiResponse.getData().getUser().getGrupoId());
+                        intent.putExtra("semestre_id", apiResponse.getData().getUser().getSemestreId());
                         startActivity(intent);
                     } else {
                         // Credenciales incorrectas
