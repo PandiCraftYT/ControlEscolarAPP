@@ -74,14 +74,13 @@ public class Justificante extends AppCompatActivity {
         setContentView(R.layout.activity_justificante);
         textViewNumCuenta = findViewById(R.id.textViewNoCuenta);
         editTextRazonInasistencia = findViewById(R.id.editTextRazonInasistencia);
-
         noCuenta = getIntent().getStringExtra("no_cuenta");
 
         Spinner spinnerOpciones = findViewById(R.id.spinnerOpciones);
         opcionSeleccionada = findViewById(R.id.opcionSeleccionada);
 
         // Crear un ArrayAdapter con el texto "MOTIVO" como primer elemento
-        String[] opciones = {"MOTIVO", "PERSONALES", "SALUD", "COVID-19"};
+        String[] opciones = {"SALUD", "PERSONALES", "COVID-19"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones) {
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
@@ -179,6 +178,10 @@ public class Justificante extends AppCompatActivity {
         String archivoData = leerContenidoArchivo(uri);
         String razonInasistencia = editTextRazonInasistencia.getText().toString();
 
+        if (fechaDesde.isEmpty() || razonInasistencia.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Por favor completa todos los campos.", Toast.LENGTH_SHORT).show();
+            return; // Detener el flujo si algún campo está vacío
+        }
 
         if (txtNombreArchivo.getVisibility() == View.VISIBLE) {
             // Si hay un archivo adjunto
@@ -355,7 +358,4 @@ public class Justificante extends AppCompatActivity {
         }
         return "";
     }
-
-
-
 }
