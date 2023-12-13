@@ -28,6 +28,13 @@ import com.google.gson.JsonObject;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.List;
+import android.os.Environment;
+import okhttp3.ResponseBody;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -312,21 +319,16 @@ public class MenuConstancia extends AppCompatActivity {
                     ResponseBody responseBody = response.body();
                     if (responseBody != null) {
                         try {
-                            inputStream[0] = responseBody.byteStream(); // Assign the value here
-                            // Guardar el archivo PDF en almacenamiento externo o abrir con un visor de PDF
-                            // Aquí puedes agregar tu lógica para guardar o abrir el PDF
-                            Log.d("OJO","Constancias"+folio);
-                            Log.d("OJO","Constancias"+fechaSolicitud);
-                            showToast("Descargando Constancia");
-                        } finally {
-                            // Cerrar el flujo de entrada para evitar posibles fugas de memoria
-                            try {
-                                if (inputStream[0] != null) {
-                                    inputStream[0].close();
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                            // Guardar el archivo PDF en almacenamiento externo
+                            boolean writtenToDisk = saveToDisk(responseBody, folio + ".pdf");
+                            if (writtenToDisk) {
+                                showToast("Constancia descargada y guardada");
+                            } else {
+                                showToast("Error al guardar la constancia");
                             }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            showToast("Error al guardar la constancia: " + e.getMessage());
                         }
                     }
                 } else {
@@ -335,6 +337,60 @@ public class MenuConstancia extends AppCompatActivity {
                     showToast("Error al descargar constancia");
                 }
             }
+            private boolean saveToDisk(ResponseBody body, String filename) throws IOException {
+                try {
+                    // Obtener el directorio de almacenamiento externo público
+                    File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+                    // Crear un archivo para almacenar la constancia descargada
+                    File file = new File(directory, filename);
+
+                    // Obtener el flujo de entrada del cuerpo de la respuesta
+                    InputStream inputStream = null;
+                    OutputStream outputStream = null;
+
+                    try {
+                        byte[] fileReader = new byte[4096];
+                        long fileSize = body.contentLength();
+                        long fileSizeDownloaded = 0;
+
+                        inputStream = body.byteStream();
+                        outputStream = new FileOutputStream(file);
+
+                        while (true) {
+                            int read = inputStream.read(fileReader);
+                            if (read == -1) {
+                                break;
+                            }
+
+                            outputStream.write(fileReader, 0, read);
+                            fileSizeDownloaded += read;
+                        }
+
+                        outputStream.flush();
+                        return true;
+                    } finally {
+                        if (inputStream != null) {
+                            try {
+                                inputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (outputStream != null) {
+                            try {
+                                outputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }
+
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
