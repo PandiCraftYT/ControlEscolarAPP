@@ -3,12 +3,15 @@ package com.example.controlescolar.activities;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -295,6 +298,27 @@ public class MenuConstancia extends AppCompatActivity {
             Log.e(TAG, "No se pudo obtener el número de cuenta para solicitar constancia");
         }
     }
+    private void openDownloadedPDFFile(String filename) {
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
+
+        if (file.exists()) {
+            Uri fileUri = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", file);
+
+            Intent target = new Intent(Intent.ACTION_VIEW);
+            target.setDataAndType(fileUri, "application/pdf");
+            target.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            Intent intent = Intent.createChooser(target, "Abrir archivo");
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                showToast("No se pudo abrir el archivo. Instala una aplicación para visualizar PDFs.");
+            }
+        } else {
+            showToast("El archivo no existe.");
+        }
+    }
+
 
     // Método para mostrar un Toast con el mensaje especificado
     private void showToast(String message) {
@@ -315,14 +339,15 @@ public class MenuConstancia extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    // Procesar la respuesta
                     ResponseBody responseBody = response.body();
                     if (responseBody != null) {
                         try {
-                            // Guardar el archivo PDF en almacenamiento externo
                             boolean writtenToDisk = saveToDisk(responseBody, folio + ".pdf");
                             if (writtenToDisk) {
                                 showToast("Constancia descargada y guardada");
+
+                                // Abrir el archivo PDF automáticamente después de descargarlo
+                                openDownloadedPDFFile(folio + ".pdf");
                             } else {
                                 showToast("Error al guardar la constancia");
                             }
@@ -332,7 +357,6 @@ public class MenuConstancia extends AppCompatActivity {
                         }
                     }
                 } else {
-                    // Manejar el error en la respuesta del servidor
                     Log.e(TAG, "Error en la respuesta del servidor al descargar constancia");
                     showToast("Error al descargar constancia");
                 }
