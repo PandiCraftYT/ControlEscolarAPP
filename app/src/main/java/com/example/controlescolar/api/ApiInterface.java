@@ -4,9 +4,11 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.Streaming;
 
 public interface ApiInterface {
 
@@ -25,6 +27,9 @@ public interface ApiInterface {
     @POST("api/android/guardarsolicitudjustificanteandroid")
     Call<GuardarSolicitudJustificanteAndroidResponse> guardarSolicitudJustificanteAndroid(@Body JsonObject body);
 
+    @POST("api/android/generarconstanciaandroid")
+    @Streaming
+    Call<ResponseBody> generarConstanciaAndroid(@Body JsonObject body);
 
     public class ApiResponse {
         private boolean success;

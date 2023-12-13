@@ -25,8 +25,11 @@ import com.example.controlescolar.api.ApiInterface;
 import com.example.controlescolar.api.RetrofitClient;
 import com.google.gson.JsonObject;
 
+import java.io.InputStream;
+import java.io.IOException;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -173,14 +176,10 @@ public class MenuConstancia extends AppCompatActivity {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MenuConstancia.this);
                         builder.setTitle("Descargar Archivo")
                                 .setMessage("¿Quieres descargar este archivo?")
-                                .setPositiveButton("Sí", new DialogInterface.OnClickListener(){
+                                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // Acción al presionar "Sí"
-                                        // Redirigir a otra actividad
-                                        Intent intent = new Intent(MenuConstancia.this, Estudio.class);
-                                        // Puedes enviar datos adicionales si es necesario
-                                        intent.putExtra("folio", constancia.getFolio());
-                                        startActivity(intent);
+                                        descargarConstancia(constancia.getFolio(), constancia.getFechaSolicitud());
                                     }
                                 })
                                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -293,6 +292,57 @@ public class MenuConstancia extends AppCompatActivity {
     // Método para mostrar un Toast con el mensaje especificado
     private void showToast(String message) {
         Toast.makeText(MenuConstancia.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void descargarConstancia(String folio, String fechaSolicitud) {
+        final InputStream[] inputStream = {null}; // Declare here
+
+        // Crear el objeto JSON para enviar en la solicitud
+        JsonObject jsonBody = new JsonObject();
+        jsonBody.addProperty("folio", folio);
+        jsonBody.addProperty("fecha_solicitud", fechaSolicitud);
+
+        // Hacer la llamada a la API para descargar la constancia
+        Call<ResponseBody> call = apiInterface.generarConstanciaAndroid(jsonBody);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    // Procesar la respuesta
+                    ResponseBody responseBody = response.body();
+                    if (responseBody != null) {
+                        try {
+                            inputStream[0] = responseBody.byteStream(); // Assign the value here
+                            // Guardar el archivo PDF en almacenamiento externo o abrir con un visor de PDF
+                            // Aquí puedes agregar tu lógica para guardar o abrir el PDF
+                            Log.d("OJO","Constancias"+folio);
+                            Log.d("OJO","Constancias"+fechaSolicitud);
+                            showToast("Descargando Constancia");
+                        } finally {
+                            // Cerrar el flujo de entrada para evitar posibles fugas de memoria
+                            try {
+                                if (inputStream[0] != null) {
+                                    inputStream[0].close();
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                } else {
+                    // Manejar el error en la respuesta del servidor
+                    Log.e(TAG, "Error en la respuesta del servidor al descargar constancia");
+                    showToast("Error al descargar constancia");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                // Manejar el error en la llamada a la API
+                Log.e(TAG, "Error en la llamada a la API al descargar constancia", t);
+                showToast("Error al descargar constancia. Verifica tu conexión a Internet.");
+            }
+        });
     }
 
 
