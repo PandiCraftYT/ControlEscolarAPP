@@ -135,17 +135,13 @@ public class MenuActivity extends AppCompatActivity {
                         startActivityForResult(intent, 1); // 1 es el requestCode
                     } else if (finalI == 3) {
                         // Abre un navegador web con la URL proporcionada
-
                         String url = "https://www.uas.edu.mx/servicios/calendario/";
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(url));
-                        startActivity(intent);
 
-                    } else if (finalI == 4) {
-                        Intent intent = new Intent(MenuActivity.this, Credencial.class);
+                        Intent intent = new Intent(MenuActivity.this, Calendario.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
-                        startActivityForResult(intent, 1); // 1 es el requestCode
+                        intent.putExtra("url_calendario", url);
+                        startActivity(intent);
 
                     }else {
                         // Muestra un mensaje si la opción no está disponible / en caso que tengamos otro cardview

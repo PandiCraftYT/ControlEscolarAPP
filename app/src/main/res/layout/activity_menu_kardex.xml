@@ -42,8 +42,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginStart="16dp"
-            android:drawablePadding="8dp"
-            android:onClick="onBackButtonClick"/>
+            android:drawablePadding="8dp" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
