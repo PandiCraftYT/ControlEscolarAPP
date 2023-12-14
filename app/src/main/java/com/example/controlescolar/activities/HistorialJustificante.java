@@ -125,7 +125,7 @@ public class HistorialJustificante extends AppCompatActivity {
             row.addView(folioTextView);
 
             TextView fechaSolicitudTextView = new TextView(this);
-            fechaSolicitudTextView.setText("FECHA SOLICITUD:\n" + justificante.getFechaSolicitud());
+            fechaSolicitudTextView.setText("FECHA JUSTICAR:\n" + justificante.getFechaSolicitud());
             fechaSolicitudTextView.setTextSize(20);
             fechaSolicitudTextView.setTextColor(Color.BLACK);
             fechaSolicitudTextView.setPadding(0, 12, 24, 12);

@@ -159,7 +159,7 @@ public class MenuConstancia extends AppCompatActivity {
 
             // Crear y configurar TextView para mostrar el valor de la fecha de solicitud
             TextView fechaSolicitudTextView = new TextView(this);
-            fechaSolicitudTextView.setText("FECHA JUSTICAR:\n" + constancia.getFechaSolicitud());
+            fechaSolicitudTextView.setText("FECHA SOLICITUD:\n" + constancia.getFechaSolicitud());
             fechaSolicitudTextView.setTextSize(20); // Tamaño del texto
             fechaSolicitudTextView.setTextColor(Color.BLACK); // Color del texto
             fechaSolicitudTextView.setPadding(24, 12, 24, 12); // Padding del texto
