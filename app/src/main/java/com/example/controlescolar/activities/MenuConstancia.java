@@ -81,11 +81,8 @@ public class MenuConstancia extends AppCompatActivity {
          if(noCuenta != null){
              textViewNoCuenta.setText(noCuenta);
          }
-
         JsonObject jsonBody = new JsonObject();
         jsonBody.addProperty("no_cuenta", noCuenta);
-
-        // Hacer la llamada a la API
         Call<ApiInterface.SolicitudConstanciaResponse> call = apiInterface.solicitudConstancia(jsonBody);
         call.enqueue(new Callback<ApiInterface.SolicitudConstanciaResponse>() {
             @Override
@@ -114,9 +111,8 @@ public class MenuConstancia extends AppCompatActivity {
         List<ApiInterface.Constancia> constancias = constanciaResponse.getData().getConstanciasSolicitadas();
 
         // Obtener la referencia al layout de la tabla
-        TableLayout tableLayout = findViewById(R.id.tableLayout); // Asegúrate de tener un TableLayout en tu XML con el id "tableLayout"
+        TableLayout tableLayout = findViewById(R.id.tableLayout);
 
-        // Iterar sobre la lista de constancias y agregar filas a la tabla
         for (ApiInterface.Constancia constancia : constancias) {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams rowLayoutParams = new TableRow.LayoutParams(
@@ -126,7 +122,6 @@ public class MenuConstancia extends AppCompatActivity {
             rowLayoutParams.setMargins(0, 12, 0, 12); // Ajustar márgenes entre filas
             row.setLayoutParams(rowLayoutParams);
 
-            // Establecer el color de fondo dependiendo del estado
             int backgroundColor;
             switch (constancia.getEstado()) {
                 case "aceptado":
@@ -141,7 +136,7 @@ public class MenuConstancia extends AppCompatActivity {
             }
             row.setBackgroundColor(backgroundColor);
 
-            // Crear y configurar TextView para mostrar el valor del folio
+
             TextView folioTextView = new TextView(this);
             folioTextView.setText("FOLIO:\n" + constancia.getFolio());
             folioTextView.setTextSize(20); // Tamaño del texto
@@ -149,7 +144,7 @@ public class MenuConstancia extends AppCompatActivity {
             folioTextView.setPadding(24, 12, 24, 12); // Padding del texto
             row.addView(folioTextView);
 
-            // Crear y configurar TextView para mostrar el valor del estado
+
             TextView estadoTextView = new TextView(this);
             estadoTextView.setText("ESTADO:\n" + constancia.getEstado());
             estadoTextView.setTextSize(20); // Tamaño del texto
@@ -157,7 +152,7 @@ public class MenuConstancia extends AppCompatActivity {
             estadoTextView.setPadding(24, 12, 24, 12); // Padding del texto
             row.addView(estadoTextView);
 
-            // Crear y configurar TextView para mostrar el valor de la fecha de solicitud
+
             TextView fechaSolicitudTextView = new TextView(this);
             fechaSolicitudTextView.setText("FECHA SOLICITUD:\n" + constancia.getFechaSolicitud());
             fechaSolicitudTextView.setTextSize(20); // Tamaño del texto
@@ -229,7 +224,6 @@ public class MenuConstancia extends AppCompatActivity {
             nuevoBoton.setText("Solicitar Constancia");
             nuevoBoton.setBackgroundResource(R.drawable.boton_personalizado);
 
-            // Establecer el diseño deseado para el nuevo botón
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, 200
             );
@@ -261,7 +255,6 @@ public class MenuConstancia extends AppCompatActivity {
             JsonObject jsonBody = new JsonObject();
             jsonBody.addProperty("no_cuenta", noCuenta);
 
-            // Hacer la llamada a la API para guardar la solicitud de constancia
             Call<ApiInterface.GuardarSolicitudConstanciaAndroidResponse> call = apiInterface.guardarSolicitudConstanciaAndroid(jsonBody);
             call.enqueue(new Callback<ApiInterface.GuardarSolicitudConstanciaAndroidResponse>() {
                 @Override
@@ -326,14 +319,12 @@ public class MenuConstancia extends AppCompatActivity {
     }
 
     private void descargarConstancia(String folio, String fechaSolicitud) {
-        final InputStream[] inputStream = {null}; // Declare here
+        final InputStream[] inputStream = {null};
 
-        // Crear el objeto JSON para enviar en la solicitud
         JsonObject jsonBody = new JsonObject();
         jsonBody.addProperty("folio", folio);
         jsonBody.addProperty("fecha_solicitud", fechaSolicitud);
 
-        // Hacer la llamada a la API para descargar la constancia
         Call<ResponseBody> call = apiInterface.generarConstanciaAndroid(jsonBody);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

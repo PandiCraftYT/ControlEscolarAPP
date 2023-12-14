@@ -64,9 +64,6 @@ public class Justificante extends AppCompatActivity {
     private boolean seleccionandoFechaDesde = true;
     private TextView opcionSeleccionada;
 
-
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -184,25 +181,18 @@ public class Justificante extends AppCompatActivity {
         }
 
         if (txtNombreArchivo.getVisibility() == View.VISIBLE) {
-            // Si hay un archivo adjunto
-            // Obtener la URI del archivo seleccionado
             uri = obtenerUriArchivoSeleccionado();
-            // Leer el contenido del archivo y convertirlo a base64
-
-            // Resto de la lógica para enviar la solicitud...
         } else {
             archivoData = "sin evidencia";
-            // Lógica para el caso en que no se adjunta un archivo
         }
-        // Crear el objeto JSON con los datos de la solicitud
         JsonObject jsonBody = new JsonObject();
         jsonBody.addProperty("no_cuenta", noCuenta);
         jsonBody.addProperty("fecha_solicitud", obtenerFechaActual());
-        jsonBody.addProperty("fecha_justificar", fechaDesde); // Usar fechaDesde como fecha_justificar
+        jsonBody.addProperty("fecha_justificar", fechaDesde);
         jsonBody.addProperty("motivo", motivoSeleccionado);
-        jsonBody.addProperty("descripcion_motivo", razonInasistencia); // Puedes cambiar esto según la lógica de tu aplicación
+        jsonBody.addProperty("descripcion_motivo", razonInasistencia);
         jsonBody.addProperty("archivo_nombre", obtenerNombreArchivoAdjunto());
-        jsonBody.addProperty("archivo_data", archivoData); // Puedes cambiar esto según la lógica de tu aplicación
+        jsonBody.addProperty("archivo_data", archivoData);
 
         Call<ApiInterface.GuardarSolicitudJustificanteAndroidResponse>call=apiInterface.guardarSolicitudJustificanteAndroid(jsonBody);
         Context applicationContext = getApplicationContext();
@@ -240,7 +230,7 @@ public class Justificante extends AppCompatActivity {
         });
 
 
-    }    // Método invocado cuando se recibe el resultado de una actividad iniciada con startActivityForResult
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -310,15 +300,11 @@ public class Justificante extends AppCompatActivity {
     }
     // Método para reiniciar las fechas seleccionadas
     private String obtenerFechaActual() {
-        // Puedes implementar la lógica para obtener la fecha actual en el formato deseado
-        // Aquí se utiliza simplemente la fecha actual en formato "yyyy-MM-dd" como ejemplo
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return sdf.format(new Date());
     }
 
     private String obtenerNombreArchivoAdjunto() {
-        // Puedes implementar la lógica para obtener el nombre del archivo adjunto
-        // En este ejemplo, se obtiene el nombre del archivo seleccionado
         return txtNombreArchivo.getText().toString();
     }
     private void reiniciarFechas() {
@@ -327,9 +313,6 @@ public class Justificante extends AppCompatActivity {
 
 
     private Uri obtenerUriArchivoSeleccionado() {
-        // Lógica para obtener la URI del archivo seleccionado
-        // Devuelve la URI del archivo seleccionado en el selector de archivos
-        // Puedes usar la variable 'uri' que ya tienes en onActivityResult
         return uri;
     }
 

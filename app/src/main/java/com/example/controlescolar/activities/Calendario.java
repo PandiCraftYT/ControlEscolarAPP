@@ -19,17 +19,9 @@ public class Calendario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
-
-        // Obtener referencia del WebView desde el layout
         webView = findViewById(R.id.webView);
-
-        // Habilitar JavaScript (si es necesario)
         webView.getSettings().setJavaScriptEnabled(true);
-
-        // Configurar un WebViewClient para navegar en el WebView
         webView.setWebViewClient(new WebViewClient());
-
-        // Cargar el URL deseado en el WebView
         String url = "https://www.uas.edu.mx/servicios/calendario/";
         webView.loadUrl(url);
     }

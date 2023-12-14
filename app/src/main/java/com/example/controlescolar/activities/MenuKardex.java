@@ -32,7 +32,7 @@ public class MenuKardex extends AppCompatActivity {
         textViewGrupoId = findViewById(R.id.textViewGrupoId);
         textViewSemestre = findViewById(R.id.textViewSemestre);
         textViewNoCuenta = findViewById(R.id.textViewNoCuenta);
-        // Obtén los datos del Intent o de donde sea que los tengas
+
         String noCuenta = getIntent().getStringExtra("no_cuenta");
         String grupoId = getIntent().getStringExtra("grupo_id");
         String semestreId = getIntent().getStringExtra("semestre_id");
@@ -49,7 +49,6 @@ public class MenuKardex extends AppCompatActivity {
         }
 
     }
-
     public void Atras(View view){
         Intent returnIntent = new Intent();
         returnIntent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
@@ -62,28 +61,16 @@ public class MenuKardex extends AppCompatActivity {
             scrollView.setVisibility(View.GONE);
         } else {
             scrollView.setVisibility(View.VISIBLE);
-            fillInfo(); // Método para llenar la información al mostrarse la sección
+            fillInfo();
         }
     }
-
     private void fillInfo() {
-        // Lógica para agregar la información a la sección correspondiente
-        // Por ejemplo:
-        // Aquí puedes agregar botones, textos, imágenes, etc., al infoLayout según tus especificaciones
+
     }
-
-
     public void onCarreraButtonClick(View view) {
-        // Este método se ejecutará al presionar el botón "CARRERA"
-        // Puedes agregar la lógica que desees aquí
         Intent intent = new Intent(MenuKardex.this, Kardex.class);
         intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
         intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
         startActivity(intent);
-    }
-
-    public void onNumeroClick(View view) {
-        // Método para abrir una nueva actividad al presionar el número
-
     }
 }

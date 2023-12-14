@@ -1,6 +1,9 @@
 package com.example.controlescolar.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -25,8 +28,8 @@ import retrofit2.Response;
 public class Kardex extends AppCompatActivity {
     private TextView textViewUserName;
     private TextView textViewUserNoCuenta;
-    private TextView textViewCarrera;
-    private TextView textViewSemestre;
+
+
 
     private TableLayout tableLayout;
 
@@ -42,8 +45,7 @@ public class Kardex extends AppCompatActivity {
 
         textViewUserName = findViewById(R.id.textviewUsername);
         textViewUserNoCuenta = findViewById(R.id.textViewNoCuenta);
-        textViewCarrera = findViewById(R.id.textViewCarreraa); //arregla eso isaac que salga su carrera y su semestre xD
-        textViewSemestre = findViewById(R.id.textViewSemestre);
+
 
         // Obtén los datos del Intent o de donde sea que los tengas
         Intent intent = getIntent();
@@ -93,27 +95,71 @@ public class Kardex extends AppCompatActivity {
         }
     }
 
+    private int rowCount = 0; // Variable para llevar el conteo de filas agregadas
+
     private void addRowToTable(String materia, String semestre, String calificacion) {
         TableRow row = new TableRow(this);
 
         // Columna de Materia
         TextView materiaTextView = new TextView(this);
-        materiaTextView.setText(materia);
+        materiaTextView.setTextSize(13); // Tamaño del texto (8 SP)
+        materiaTextView.setTextColor(getResources().getColor(R.color.black)); // Color del texto
+        materiaTextView.setGravity(Gravity.START | Gravity.CENTER_VERTICAL); // Alinear texto a la izquierda y centrado verticalmente
+
+        // Verificar si el texto excede los 20 caracteres
+        if (materia.length() > 20) {
+            String[] words = materia.split(" ");
+            StringBuilder newText = new StringBuilder();
+
+            // Añadir salto de línea después de cada palabra si excede los 20 caracteres
+            int charCount = 0;
+            for (String word : words) {
+                if (charCount + word.length() > 20) {
+                    newText.append("\n");
+                    charCount = 0;
+                }
+                newText.append(word).append(" ");
+                charCount += word.length() + 1;
+            }
+            materiaTextView.setText(newText.toString().trim()); // Establecer texto modificado
+        } else {
+            materiaTextView.setText(materia); // Establecer texto normal
+        }
+
         row.addView(materiaTextView);
 
         // Columna de Semestre
         TextView semestreTextView = new TextView(this);
         semestreTextView.setText(semestre);
+        semestreTextView.setTextSize(13); // Tamaño del texto (8 SP)
+        semestreTextView.setTextColor(getResources().getColor(R.color.black)); // Color del texto
+        semestreTextView.setGravity(Gravity.CENTER); // Centrar el texto horizontalmente
         row.addView(semestreTextView);
 
         // Columna de Calificación
         TextView calificacionTextView = new TextView(this);
         calificacionTextView.setText(calificacion);
+        calificacionTextView.setTextSize(13); // Tamaño del texto (8 SP)
+        calificacionTextView.setTextColor(getResources().getColor(R.color.black)); // Color del texto
+        calificacionTextView.setGravity(Gravity.CENTER); // Centrar el texto horizontalmente
         row.addView(calificacionTextView);
 
         // Agregar la fila a la tabla
         tableLayout.addView(row);
+
+        rowCount++; // Incrementar el contador de filas
+
+        // Agregar un salto de línea después de cada 5 filas
+        if (rowCount % 5 == 0) {
+            TextView emptyTextView = new TextView(this);
+            emptyTextView.setText("\n");
+            tableLayout.addView(emptyTextView);
+        }
     }
+
+
+
+
 
     public void Atras(View view) {
         Intent returnIntent = new Intent();

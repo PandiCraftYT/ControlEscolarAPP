@@ -172,15 +172,13 @@ public class HistorialJustificante extends AppCompatActivity {
         }
     }
 
-
-
     // Método para descargar un justificante
     private void descargarJustificante(String folio, String fechaJustificar) {
         JsonObject jsonBody = new JsonObject();
         jsonBody.addProperty("folio", folio);
         jsonBody.addProperty("fecha_justificar", fechaJustificar);
 
-        Call<ResponseBody> call = apiInterface.generarJustificanteAndroid(jsonBody); // Reemplaza con el método correspondiente de tu API para descargar justificantes
+        Call<ResponseBody> call = apiInterface.generarJustificanteAndroid(jsonBody);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

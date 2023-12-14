@@ -31,7 +31,6 @@ public class MenuJustificante extends AppCompatActivity {
         }
 
     }
-    // Debes establecer un resultado antes de cerrar MenuJustificante
     public void Atras(View view){
         Intent returnIntent = new Intent();
         returnIntent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));

@@ -85,22 +85,15 @@
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold" />
-
-                <!-- Agrega más encabezados según tus necesidades -->
-
             </TableRow>
         </TableLayout>
-
-
         <!-- TableLayout para los datos -->
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:padding="12dp"> <!-- Agregar padding para espaciar los datos -->
-
-            <!-- Aquí se agregarán las filas de la tabla dinámicamente desde el código Java -->
+            android:padding="12dp">
         </TableLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
