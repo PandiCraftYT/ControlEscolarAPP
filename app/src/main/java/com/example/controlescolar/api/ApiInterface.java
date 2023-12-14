@@ -31,6 +31,11 @@ public interface ApiInterface {
     @Streaming
     Call<ResponseBody> generarConstanciaAndroid(@Body JsonObject body);
 
+    @POST("api/android/generarjustificanteandroid")
+    @Streaming
+    Call<ResponseBody> generarJustificanteAndroid(@Body JsonObject body);
+
+
     public class ApiResponse {
         private boolean success;
         private String message;

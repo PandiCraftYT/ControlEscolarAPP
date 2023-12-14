@@ -125,7 +125,7 @@ public class HistorialJustificante extends AppCompatActivity {
             row.addView(folioTextView);
 
             TextView fechaSolicitudTextView = new TextView(this);
-            fechaSolicitudTextView.setText("FECHA JUSTICAR:\n" + justificante.getFechaSolicitud());
+            fechaSolicitudTextView.setText("FECHA JUSTICAR:\n" + justificante.getFechaJustificar());
             fechaSolicitudTextView.setTextSize(20);
             fechaSolicitudTextView.setTextColor(Color.BLACK);
             fechaSolicitudTextView.setPadding(0, 12, 24, 12);
@@ -157,7 +157,7 @@ public class HistorialJustificante extends AppCompatActivity {
                                 .setMessage("¿Quieres descargar este archivo?")
                                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        descargarJustificante(justificante.getFolio(), justificante.getFechaSolicitud());
+                                        descargarJustificante(justificante.getFolio(), justificante.getFechaJustificar());
                                     }
                                 })
                                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -175,12 +175,12 @@ public class HistorialJustificante extends AppCompatActivity {
 
 
     // Método para descargar un justificante
-    private void descargarJustificante(String folio, String fechaSolicitud) {
+    private void descargarJustificante(String folio, String fechaJustificar) {
         JsonObject jsonBody = new JsonObject();
         jsonBody.addProperty("folio", folio);
-        jsonBody.addProperty("fecha_solicitud", fechaSolicitud);
+        jsonBody.addProperty("fecha_justificar", fechaJustificar);
 
-        Call<ResponseBody> call = apiInterface.descargarJustificante(jsonBody); // Reemplaza con el método correspondiente de tu API para descargar justificantes
+        Call<ResponseBody> call = apiInterface.generarJustificanteAndroid(jsonBody); // Reemplaza con el método correspondiente de tu API para descargar justificantes
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
