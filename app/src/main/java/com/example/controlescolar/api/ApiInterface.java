@@ -15,6 +15,9 @@ public interface ApiInterface {
     @POST("api/android/authenticate")
     Call<ApiResponse> authenticate(@Body JsonObject body);
 
+    @POST("api/android/getkardex")
+    Call<KardexResponse> getKardex(@Body JsonObject body);
+
     @POST("api/android/solicitudconstancia")
     Call<SolicitudConstanciaResponse> solicitudConstancia(@Body JsonObject body);
 
@@ -101,6 +104,59 @@ public interface ApiInterface {
             }
         }
     }
+
+
+    public class KardexResponse {
+        private boolean success;
+        private String message;
+        private KardexData data;
+
+        public boolean isSuccess() {
+            return success;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public KardexData getData() {
+            return data;
+        }
+    }
+
+    public class KardexData {
+        private List<KardexEntry> curriculo;
+
+        public List<KardexEntry> getCurriculo() {
+            return curriculo;
+        }
+    }
+
+    public class KardexEntry {
+        private String materia;
+        private String calificacion;
+        private String semestre;
+
+        public String getMateria() {
+            return materia;
+        }
+
+        public String getCalificacion() {
+            return calificacion;
+        }
+
+        public String getSemestre() {
+            return semestre;
+        }
+    }
+
+
+
+
+
+
+
+
 
     public class SolicitudConstanciaResponse {
         private String status;
