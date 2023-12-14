@@ -57,7 +57,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:textColor="@color/black"
-            android:text="SELECCIONA UNIDAD ACADÉMICA PARA GENERAR KARDEX"
+            android:text="SELECCIONA UNIDAD ACADÉMICA PARA GENERAR LA BOLETA"
             android:textSize="18sp"
             android:textAlignment="center"/>
 
@@ -67,29 +67,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textTitulo"
-            android:layout_margin="16dp"
-        android:layout_centerHorizontal="true"
-        android:onClick="toggleInfoVisibility"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="toggleInfoVisibility"
             app:cardBackgroundColor="@color/beige"
-            >
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
-        <!-- Contenido del CardView -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="INFORMATICA"
-            android:textColor="@color/black"
-            android:padding="20dp"
-            android:layout_marginLeft="110dp"
-            android:textAlignment="center"
-            />
+            <!-- Contenido del CardView -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:padding="20dp"
+                android:text="INFORMATICA"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -106,16 +107,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="16dp">
-
-                <TextView
-                    android:id="@+id/textNumero"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onNumeroClick"
-                    android:text="2700"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -148,7 +139,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1 LICENCIATURA EN INFORMÁTICA"
+                    android:text="LICENCIATURA EN INFORMÁTICA"
                     android:textColor="@color/black" />
 
 
@@ -160,22 +151,7 @@
                     app:cardElevation="4dp"
                     app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="125dp"
-                        android:padding="16dp"
-                        android:text="PLAN EST."
-                        android:textAlignment="center"
-                        android:textColor="@color/black" />
                 </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4"
-                    android:textColor="@color/black" />
-
                 <!-- CardView para PERIODO -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardPeriodo"
@@ -197,10 +173,20 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:id="@+id/textViewSemestre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text=""
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textViewNoCuenta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"
+                    >
+
+                </TextView>
 
                 <!-- CardView para GRUPO -->
                 <androidx.cardview.widget.CardView
@@ -223,36 +209,32 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:id="@+id/textViewGrupoId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4"
+                    android:text=""
                     android:textColor="@color/black" />
 
-                <!-- CardView para VIGENCIA -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardVigencia"
+                    android:id="@+id/generarBoleta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/beige"
+                    app:cardBackgroundColor="@color/light_blue_600"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
                     app:cardUseCompatPadding="true">
 
                     <TextView
+                        android:onClick="onCarreraButtonClick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="130dp"
+                        android:layout_marginLeft="135dp"
                         android:padding="16dp"
-                        android:text="VIGENCIA"
+                        android:text="GENERAR"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="A"
-                    android:textColor="@color/black" />
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

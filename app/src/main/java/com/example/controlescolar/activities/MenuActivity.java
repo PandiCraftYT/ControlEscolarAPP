@@ -115,6 +115,8 @@ public class MenuActivity extends AppCompatActivity {
                         Intent intent = new Intent(MenuActivity.this, MenuKardex.class);
                         intent.putExtra("no_cuenta", textViewNumCuenta.getText().toString());
                         intent.putExtra("nombre", textViewAlumno.getText().toString());
+                        intent.putExtra("grupo_id", textViewGrupo.getText().toString());
+                        intent.putExtra("semestre_id", textViewSemestre.getText().toString());
                         startActivityForResult(intent, 1); // 1 es el requestCode
                     } else if (finalI == 1) {
                         // Abre la actividad Estudio

@@ -17,19 +17,37 @@ public class MenuKardex extends AppCompatActivity {
     private ScrollView scrollView;
     private LinearLayout infoLayout;
 
+    private TextView textViewGrupoId;
+
+    private TextView textViewSemestre;
+
+    private TextView textViewNoCuenta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_kardex);
         scrollView = findViewById(R.id.scrollView);
         infoLayout = findViewById(R.id.infoLayout);
-
+        textViewGrupoId = findViewById(R.id.textViewGrupoId);
+        textViewSemestre = findViewById(R.id.textViewSemestre);
+        textViewNoCuenta = findViewById(R.id.textViewNoCuenta);
         // Obtén los datos del Intent o de donde sea que los tengas
-        Intent intent = getIntent();
-        if (intent != null) {
-            String noCuenta = intent.getStringExtra("no_cuenta");
-            String nombre = intent.getStringExtra("nombre");
+        String noCuenta = getIntent().getStringExtra("no_cuenta");
+        String grupoId = getIntent().getStringExtra("grupo_id");
+        String semestreId = getIntent().getStringExtra("semestre_id");
+
+        if (grupoId != null) {
+            textViewGrupoId.setText(grupoId);
         }
+
+        if(semestreId != null){
+            textViewSemestre.setText(semestreId);
+        }
+        if(noCuenta != null){
+            textViewNoCuenta.setText(noCuenta);
+        }
+
     }
 
     public void Atras(View view){
@@ -58,13 +76,14 @@ public class MenuKardex extends AppCompatActivity {
     public void onCarreraButtonClick(View view) {
         // Este método se ejecutará al presionar el botón "CARRERA"
         // Puedes agregar la lógica que desees aquí
-    }
-
-    public void onNumeroClick(View view) {
-        // Método para abrir una nueva actividad al presionar el número
         Intent intent = new Intent(MenuKardex.this, Kardex.class);
         intent.putExtra("no_cuenta", getIntent().getStringExtra("no_cuenta"));
         intent.putExtra("nombre", getIntent().getStringExtra("nombre"));
         startActivity(intent);
+    }
+
+    public void onNumeroClick(View view) {
+        // Método para abrir una nueva actividad al presionar el número
+
     }
 }

@@ -1,11 +1,15 @@
 package com.example.controlescolar.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import com.example.controlescolar.R;
 import com.example.controlescolar.api.ApiInterface;
@@ -24,6 +28,9 @@ public class Kardex extends AppCompatActivity {
     private TextView textViewCarrera;
     private TextView textViewSemestre;
 
+    private TableLayout tableLayout;
+
+
     private ApiInterface apiInterface;
 
     @Override
@@ -31,6 +38,7 @@ public class Kardex extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kardex);
         apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
+        tableLayout = findViewById(R.id.tableLayout);
 
         textViewUserName = findViewById(R.id.textviewUsername);
         textViewUserNoCuenta = findViewById(R.id.textViewNoCuenta);
@@ -61,9 +69,10 @@ public class Kardex extends AppCompatActivity {
                             // Manejar la respuesta exitosa aquí
                             ApiInterface.KardexData kardexData = kardexResponse.getData();
                             List<ApiInterface.KardexEntry> kardexEntries = kardexData.getCurriculo();
-                            // Actualizar las vistas con la información del kardex
-                            // Ejemplo: textViewCarrera.setText("Carrera: " + kardexData.getCarrera());
-                            // textViewSemestre.setText("Semestre: " + kardexData.getSemestre());
+                            for (ApiInterface.KardexEntry entry : kardexEntries) {
+                                addRowToTable(entry.getMateria(), entry.getSemestre(), entry.getCalificacion());
+                            }
+
                         } else {
                             // Manejar la respuesta no exitosa aquí
                             String errorMessage = (kardexResponse != null) ? kardexResponse.getMessage() : "Unknown error";
@@ -82,6 +91,28 @@ public class Kardex extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void addRowToTable(String materia, String semestre, String calificacion) {
+        TableRow row = new TableRow(this);
+
+        // Columna de Materia
+        TextView materiaTextView = new TextView(this);
+        materiaTextView.setText(materia);
+        row.addView(materiaTextView);
+
+        // Columna de Semestre
+        TextView semestreTextView = new TextView(this);
+        semestreTextView.setText(semestre);
+        row.addView(semestreTextView);
+
+        // Columna de Calificación
+        TextView calificacionTextView = new TextView(this);
+        calificacionTextView.setText(calificacion);
+        row.addView(calificacionTextView);
+
+        // Agregar la fila a la tabla
+        tableLayout.addView(row);
     }
 
     public void Atras(View view) {

@@ -157,7 +157,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 >
-
+            </ScrollView>
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="410dp"
@@ -198,7 +198,7 @@
 
                 <!-- Aquí se agregarán filas para cada materia, semestre y calificación usando código Java/Kotlin -->
             </TableLayout>
-            </ScrollView>
+
         </LinearLayout>
 
     </RelativeLayout>
